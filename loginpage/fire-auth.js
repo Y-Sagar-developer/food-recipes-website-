@@ -74,7 +74,7 @@ signInWithEmailAndPassword(auth, email, password)
     const user = userCredential.user;
     console.log("User logged in:",user)
     alert("Login sucessful!")
-    window.open("./mainpage/index.html")
+    window.open("../mainpage/index.html")
     // ...
   })
   .catch((error) => {
