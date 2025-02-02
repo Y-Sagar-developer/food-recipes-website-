@@ -1,0 +1,576 @@
+      /* Light and Dark Mode Styles */
+      body.dark-mode {
+        background-color: #121212;
+        color: white;
+      }
+      body.light-mode {
+        background-color: white;
+        color: black;
+      }
+
+      :root {
+        --primary: #fea116;
+        --light: #f1f8ff;
+        --dark: #0f172b;
+      }
+
+      /* Navbar Styles */
+      .navbar-dark .nav-link {
+        color: var(--light) !important;
+        text-transform: uppercase;
+        transition: 0.3s;
+      }
+      .navbar-dark .nav-link:hover,
+      .navbar-dark .nav-link.active {
+        color: var(--primary) !important;
+      }
+      .navbar-toggler {
+        outline: none;
+      }
+      .navbar-collapse {
+        padding-left: 10px;
+      }
+
+      .bg-dark {
+        position: sticky;
+        top: 0;
+        z-index: 1020;
+      }
+
+      /* Hero Section */
+      .hero-header {
+        background: linear-gradient(
+            rgba(15, 23, 43, 0.9),
+            rgba(15, 23, 43, 0.9)
+          ),
+          url(https://hogr.app/blog/wp-content/uploads/2022/10/image-72.png);
+        background-position: center center;
+        background-size: cover;
+        position: relative;
+      }
+
+      .hero-header img {
+        animation: imgRotate 20s linear infinite;
+      }
+
+      @keyframes imgRotate {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      
+
+      /* Background Emoji Animation Styles */
+      .background-animation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 1; /* Behind all content */
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .emoji {
+        position: absolute;
+        font-size: 3rem; /* Large size for better visibility */
+        animation: moveUp 15s ease-in-out infinite;
+        opacity: 0;
+        will-change: transform, opacity;
+      
+      }
+
+      .emoji:nth-child(odd) {
+        color: #fea116;
+      }
+      .emoji:nth-child(even) {
+        color: #2980b9;
+      }
+
+      @keyframes moveUp {
+        0% {
+          top: 100vh; /* Start from below the fold */
+          opacity: 0;
+          transform: translateX(-50%);
+        }
+        30% {
+          opacity: 1; /* Fade in */
+        }
+        100% {
+          top: -50px; /* End above the viewport */
+          opacity: 0; /* Fade out */
+        }
+      }
+
+      /* Search Box Styles */
+      .search-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .search-box input {
+        padding: 12px 15px;
+        font-size: 16px;
+        width: 100%;
+        max-width: 300px;
+        border: 1px solid #34495e;
+        border-radius: 5px;
+        color: #34495e;
+        z-index: 2;
+      }
+
+      .search-box button {
+        padding: 12px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        background-color: #2980b9;
+        color: #fff;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+
+      .search-box button:hover {
+        background-color: #1c6ea4;
+      }
+
+
+    /* -----------------------------------  */
+    
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  /* body{
+      background-color: #2b1d0f;
+      color: #fff;
+  }
+  
+  header nav{
+      background-color: #212121;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  
+  header nav h1{
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+  }
+  
+  header nav form{
+      display: flex;
+      justify-content: center;
+  } */
+  
+  form input[type="text"]{
+      flex-grow: 1;
+      margin-right: 10px;
+  }
+  
+  form input[type="text"],
+  button[type="submit"]{
+      border: none;
+      font-size: 18px;
+      padding: 10px;
+      border-radius: 4px;
+  }
+  
+  form button[type="submit"]{
+      background-color: #f44336;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+  }
+  
+  form button[type="submit"]:hover, 
+  .recipe button:hover, 
+  .recipe-close-btn:hover{
+      background-color: #ff5c5c;
+  }
+  
+  /* Main Section */
+  .recipe-container{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+      gap: 20px;
+      width: 90%;
+      margin: 20px auto;
+      padding: 20px;
+      place-items: center;
+  }
+  
+  .recipe{
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      color: #000;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(78, 73, 73, 0.2);
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      padding: 20px;
+      height: 450px; /* Fixed height for consistency */
+  }
+  
+  .recipe:hover{
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .recipe img{
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+  }
+  
+  .recipe h3{
+      font-size: 22px;
+      margin: 10px 0;
+      font-weight: bold;
+  }
+  
+  .recipe p{
+      font-size: 16px;
+      color: #4a4a4a;
+      margin: 5px 0;
+  }
+  
+  .recipe span{
+      font-weight: bold;
+  }
+  
+  .recipe button{
+      font-size: 18px;
+      font-weight: 600;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      margin: 18px auto;
+      background-color: #f44336;
+      color: #fff;
+      transition: background-color 0.3s ease-in-out;
+  }
+  
+  /* Recipe Details*/
+  .recipe-details{
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #694c2f;
+      border-radius: 12px;
+      width: 50%;
+      height: 70%;
+      font-size: 18px;
+      transition: all 0.5s ease-in-out;
+      overflow-y: scroll;
+      padding: 20px;
+      z-index: 10;
+  }
+  
+  .recipe-details-content{
+      padding: 10px;
+  }
+  
+  .recipeName{
+      text-align: center;
+      text-transform: uppercase;
+      text-decoration: underline;
+      margin-bottom: 10px;
+  }
+  
+  .ingredientList{
+      margin-top: 10px;
+      margin-left: 20px;
+  }
+  
+  .recipeInstructions p{
+      line-height: 30px;
+      white-space: pre-line;
+  }
+  .recipeName, .ingredientList, .recipeInstructions{
+      margin-bottom: 20px;
+  }
+  
+  .recipe-close-btn{
+      border: none;
+      font-size: 18px;
+      padding: 8px;
+      border-radius: 4px;
+      background-color: #f44336;
+      color: #fff;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  /* Adding scrollbar to recipe detail popup*/
+  .recipe-details::-webkit-scrollbar{
+      width: 10px;
+  }
+  
+  .recipe-details::-webkit-scrollbar-thumb{
+      background-color: #b5b5b5;
+      border-radius: 16px;
+  }
+  
+  body::-webkit-scrollbar{
+      width: 16px;
+  }
+  
+  body::-webkit-scrollbar-thumb{
+      background-color: #a1a1a1;
+  }
+  
+  body::-webkit-scrollbar-track{
+      background-color: #ebebeb;
+  }
+  
+  /* Responsive code */
+  @media screen and 
+  (max-width:600px){
+      header nav{
+          flex-direction: column;
+      }
+      header nav form{
+          width: 80%;
+          margin-top: 20px;
+      }
+  
+      .recipe-container{
+          width: 90%;
+          grid-template-columns: repeat(2, 1fr); /* For smaller screens, show 2 cards per row */
+      }
+      
+      .recipe-details{
+          width: 80%;
+          height: 75%;
+      }
+  }
+
+
+  /* -------------------------------------------------  */
+  #video {
+    padding: 0px;
+    margin: 0px;
+  }
+  @media screen and (max-width: 400px) {
+    #video {
+      width: 100%;
+      padding: 0;
+    }
+  }
+  
+  /* Section 2: Instagram Feeds */
+  .istagram-feeds {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 5px; /* No gaps between grid items */
+    margin: 0; /* Remove margins */
+    padding: 0; /* Remove padding */
+  }
+
+  .py-6 {
+    padding-top: 0.5rem !important;
+    /* padding-bottom: 1rem !important; */
+  }
+
+  @media (max-width: 768px) {
+    .istagram-feeds {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .istagram-feeds .projects-w3l-grid-info {
+    position: relative;
+    overflow: hidden;
+  }
+  .img-fluid {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .istagram-feeds .content-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+  }
+  .istagram-feeds .content-details {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    color: #fff;
+    font-size: 24px;
+  }
+  .istagram-feeds .projects-w3l-grid-info:hover .content-overlay,
+  .istagram-feeds .projects-w3l-grid-info:hover .content-details {
+    opacity: 1;
+  }
+
+  /* Section 3: Footer */
+  .footer-top-16 {
+    background-color: #0e0e0e;
+  }
+  .footer-top-16 h3,
+  .copy-text {
+    color: #fff;
+  }
+  .footer-contact-list li i,
+  .footer-botm h6 {
+    color: #f50537;
+  }
+  .social a {
+    background-color: #f50537;
+    color: #fff;
+  }
+  .footer-top-16 {
+    background-color: #0e0e0e;
+  }
+  .py-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .w3l-footer-16 h3 {
+    font-size: 22px;
+    line-height: 25px;
+    margin-bottom: 35px;
+    color: #ffff;
+    font-weight: bold;
+  }
+  .w3l-footer-16 p {
+    color: #d3d3d3;
+    font-weight: 100;
+  }
+  .mt-3 {
+    margin-top: 1rem !important;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  .mt-4 {
+    margin-top: 1.5remm !important;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  .w3l-footer-16 ul.social li {
+    display: inline-block;
+  }
+  .w3l-footer-16 ul.social li a {
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #f50537;
+    color: #ffff;
+    line-height: 30px;
+    height: 30px;
+    width: 30px;
+    font-size: 13px;
+    margin-right: 8px;
+    text-align: center;
+  }
+  .w3l-footer-16 li a {
+    margin-bottom: 10px;
+  }
+  .fab {
+    font-family: "Font Awesome 5 Brands";
+    font-weight: 400;
+  }
+  .fa-facebook-f:before {
+    content: "\f39e";
+  }
+  .fas {
+    font-weight: 900;
+  }
+  .footer-contact-list li {
+    display: flex;
+    align-items: baseline;
+  }
+  .footer-contact-list li i {
+    color: #f50537;
+    margin-right: 10px;
+  }
+  .w3l-footer-16 li span {
+    color: #d3d3d3;
+    font-weight: 100;
+  }
+  .w3l-footer-16 li a {
+    color: #d3d3d3;
+    font-weight: 100;
+  }
+  .footer-botm h6 {
+    color: #ffff;
+    font-weight: bold;
+  }
+  .d-flex {
+    display: flex !important;
+  }
+  .w3l-footer-16 input[type="email"] {
+    background: #fff;
+    border: none;
+    padding: 14px 20px;
+    font-size: 16px;
+    width: 80%;
+    color: #060606;
+    border-radius: 30px 0 0 30px;
+  }
+  .w3l-footer-16 button {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 14px 12px;
+    cursor: pointer;
+    width: 20%;
+    color: #fff;
+    background: #f50537;
+    border-radius: 0 30px 30px 0;
+  }
+  .copy-section {
+    background-color: #060500;
+  }
+  .text-center {
+    text-align: center !important;
+  }
+  .py-4 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  .w3l-footer-16 p.copy-text {
+    color: #fff;
+  }
+  .w3l-footer-16 p.copy-text a {
+    color: #f50537;
+    text-decoration: underline;
+  }
